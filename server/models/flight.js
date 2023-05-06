@@ -24,7 +24,7 @@ const FlightSchema = new Schema(
     },
     price: {
       type: Number,
-      required: true,
+      required: true
     },
     noofseats:{
       type: Number,
