@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "../styles/Navbar.css"
+import { Link } from 'react-router-dom';
 export default function Navbars() {
     return (
       <Navbar  className='Navbar' bg="danger" variant="dark" expand="lg">
@@ -21,22 +22,22 @@ export default function Navbars() {
             >
               <Nav.Link href="#action1">Home</Nav.Link>
               <Nav.Link href="#action2">Contact Us</Nav.Link>
-              <NavDropdown title="Services" bg="danger" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action4" bg="danger" style={{ border: '2px solid white', color: 'white' }}>
+              <NavDropdown title="Services" id="navbarScrollingDropdown" >
+              <NavDropdown.Item href="#action4"  style={{ backgroundColor: '#dc3545', border: '2px solid white', color: 'white' }}>
                 Flight booking
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5" bg="danger" style={{ border: '2px solid white', color: 'white' }}>
-                Flight ordering
+              <NavDropdown.Item href="#action5"  style={{ backgroundColor: '#dc3545', border: '2px solid white', color: 'white' }}>
+                Flight details
               </NavDropdown.Item>
             </NavDropdown>
               <Nav.Link href="#" >
                 About Us
               </Nav.Link>
             </Nav>
-            <Form className="d-flex" style={{ gap: "13px" }}>
-              <Button variant="outline-light">Login</Button>
-              <Button variant="outline-light">Sign up</Button>
+            <Form className="d-flex" style={{ gap: "13px" , marginRight:"15px" }}>
+              <Link to={"/login"}><Button variant="outline-light">Login</Button></Link>
+              <Link to={"/signup"}><Button variant="outline-light">Sign up</Button></Link>
             </Form>
           </Navbar.Collapse>
         </Container>
