@@ -5,7 +5,10 @@ import { Card, Container, Row, Col, Button } from "react-bootstrap";
 
 const BookingDetails = () => {
   const [bookings, setBookings] = useState([]);
-
+  const styles={
+    transition: 'all 0.2s ease-in-out', // add transition effect
+    boxShadow: '1px 3px 7px rgba(0, 0, 0, 0.9)', // add box shadow effect
+  };
   useEffect(() => {
     axios.get("http://localhost:8000/api/book").then((response) => {
       setBookings(response.data);
@@ -25,10 +28,11 @@ const BookingDetails = () => {
   return (
     <Container>
       <Adminnavbar />
+      <h2 className="text-center mb-4">Bookings Till Now</h2>
       <Row>
         {bookings.map((booking) => (
-          <Col md={4} key={booking._id}>
-            <Card className="mb-4">
+          <Col md={4} key={booking._id} >
+            <Card className="mb-4" style={styles}>
             <Card.Header className="bg-danger text-white">
                 <h4 className="mb-2 text-right">
                 {(booking.customer_name).toUpperCase()}

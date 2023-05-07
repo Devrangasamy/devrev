@@ -7,6 +7,10 @@ import { Link } from 'react-router-dom';
 import Adminnavbar from './Adminnavbar';
 
 const Viewflights = () => {
+  const styles={
+    transition: 'all 0.2s ease-in-out', // add transition effect
+    boxShadow: '1px 3px 7px rgba(0, 0, 0, 0.9)', // add box shadow effect
+  };
   const [flights, setFlights] = useState([]);
 
   useEffect(() => {
@@ -34,7 +38,7 @@ const Viewflights = () => {
       <Row>
         {flights.map(flight => (
           <Col md={4} key={flight._id}>
-            <Card className="mb-4">
+            <Card className="mb-4" style={styles}>
               <Card.Header className="bg-danger text-white">
                 <h4 className="mb-2 text-right">
                   {(flight.flightname).toUpperCase()}
@@ -77,21 +81,24 @@ const Viewflights = () => {
                     </Col>
                   </Row>
                   <Row className="mt-3 justify-content-center">
-                    <Col>
-                      <Link to={{ pathname: "/booking", state: { data: flight } }}>
-                        <Button variant="danger">Book Now</Button>
-                      </Link>
-                    </Col>
-                  </Row>
-                </Card.Text>
-              </Card.Body>
-              <Button
+                  <Col className="d-flex justify-content-center">
+                    <Button 
                 variant="outline-danger"
-                className="d-flex justify-content-center mx-auto mt-3"
                 onClick={() => handleDelete(flight._id)}
               >
                 Delete
               </Button>
+              </Col>
+              <Col className="d-flex justify-content-center">
+              <Link to={"/editflight"} state={{data:flight}}>
+              <Button variant="outline-danger">
+                Edit
+              </Button>
+              </Link>
+              </Col>
+                  </Row>
+                </Card.Text>
+              </Card.Body>
             </Card>
           </Col>
         ))}

@@ -12,9 +12,15 @@ export const registerflight = async (req, res, next) => {
   };
   export const getflights = async (req, res, next) => {
     try {
-      const flight = await Flight.find();
-      res.status(200).json(flight);
+      console.log(req.query.depature)
+      console.log(req.query.arrival)
+const filter = { flightname: {"$regex":req.query.flightname} ,from: {"$regex":req.query.from},to: {"$regex":req.query.to},flighttime: {"$lte":req.query.duration},take_off: {"$gte":req.query.depature},take_off: {"$lte":req.query.arrival}};
+      const flights = await Flight.find(filter);
+  
+      console.log(flights);
+      res.status(200).json(flights);
     } catch (err) {
+      console.log(req.query.depature);
       next(err);
     }
   };
@@ -30,6 +36,14 @@ export const registerflight = async (req, res, next) => {
   export const deleteflight = async (req, res, next) => {
     try {
       const book = await Flight.findByIdAndDelete(req.params.id);
+      res.status(200).json(book);
+    } catch (err) {
+      next(err);
+    }
+  };
+  export const editflight = async (req, res, next) => {
+    try {
+      const book = await Flight.findByIdAndUpdate(req.params.id,req.body);
       res.status(200).json(book);
     } catch (err) {
       next(err);

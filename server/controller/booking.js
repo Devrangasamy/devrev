@@ -32,7 +32,10 @@ export const registerbooking=async(req,res,next)=>{
 
   export const deletebooking = async (req, res, next) => {
     try {
-      const book = await Booking.findByIdAndDelete(req.params.id);
+      const book = await Booking.findById(req.params.id);
+      const flightdetails = await Flight.find({_id:book.flight});
+      const update=await Flight.findOneAndUpdate({_id:book.flight},{$set:{noofseats:flightdetails[0].noofseats+book.booking_details.length}})
+      const a = await Booking.findByIdAndDelete(req.params.id);
       res.status(200).json(book);
     } catch (err) {
       next(err);

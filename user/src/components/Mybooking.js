@@ -21,17 +21,22 @@ const BookingDetails = () => {
       console.log(error);
     }
   };
+  const styles={
+    transition: 'all 0.2s ease-in-out', // add transition effect
+    boxShadow: '1px 3px 7px rgba(0, 0, 0, 0.9)', // add box shadow effect
+  };
 
   return (
     <Container>
       <Navbars />
-      <Row>
-        {console.log(bookings)}
+      <h2 className="text-center mb-4">My Bookings</h2>
+      <br></br>
+      <Row >
         {bookings.map((booking) => (
           <Col md={4} key={booking._id}>
-            <Card className="mb-4">
+            <Card className="mb-4" style={styles}>
             <Card.Header className="bg-danger text-white">
-                <h4 className="mb-2 text-right">
+                <h4 className="mb-2 d-flex justify-content-center">
                 {(booking.customer_name).toUpperCase()}
                 </h4>
               </Card.Header>
