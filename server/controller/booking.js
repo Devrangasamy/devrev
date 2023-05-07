@@ -1,5 +1,6 @@
 import Booking from "../models/booking.js";
 import Flight from "../models/flight.js";
+
 export const registerbooking=async(req,res,next)=>{
   const bookflight=new Booking(req.body);
   // console.log(req.body);
@@ -22,7 +23,25 @@ export const registerbooking=async(req,res,next)=>{
 }
   export const getbooking = async (req, res, next) => {
     try {
-      const book = await Booking.find();
+      const book = await Booking.find().populate("user flight");
+      res.status(200).json(book);
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  export const deletebooking = async (req, res, next) => {
+    try {
+      const book = await Booking.findByIdAndDelete(req.params.id);
+      res.status(200).json(book);
+    } catch (err) {
+      next(err);
+    }
+  };
+  export const getbookings = async (req, res, next) => {
+    try {
+      const book = await Booking.find({ user: req.params.id }).populate("user flight");
+      console.log(book)
       res.status(200).json(book);
     } catch (err) {
       next(err);

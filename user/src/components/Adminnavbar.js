@@ -9,12 +9,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "../styles/Navbar.css"
 import { Link } from 'react-router-dom';
-export default function Navbars() {
+export default function Adminnavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigates=useNavigate();
   const logoutuser = () => {
     localStorage.removeItem("username");
-    localStorage.removeItem("id");
     navigates("/");
     setIsOpen(!isOpen);
   };
@@ -22,7 +21,7 @@ export default function Navbars() {
       <div>
       <Navbar  className='Navbar m-3' bg="danger" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#" variant="light">Flight Booking</Navbar.Brand>
+          <Navbar.Brand href="#" variant="light">Admin</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -30,16 +29,17 @@ export default function Navbars() {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="#action2">Contact Us</Nav.Link>
               <NavDropdown title="Services" id="navbarScrollingDropdown" >
-              <NavDropdown.Item href="/flightdetails"  style={{ backgroundColor: '#dc3545', border: '2px solid white', color: 'white' }}>
-                Flight booking
+              <NavDropdown.Item href="/addflights"  style={{ backgroundColor: '#dc3545', border: '2px solid white', color: 'white' }}>
+                Add Flight
               </NavDropdown.Item>
-              <NavDropdown.Item href="/mybooking"  style={{ backgroundColor: '#dc3545', border: '2px solid white', color: 'white' }}>
-                My booking
+              <NavDropdown.Item href="/viewflights"  style={{ backgroundColor: '#dc3545', border: '2px solid white', color: 'white' }}>
+                view flights
               </NavDropdown.Item>
-
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/viewbooking"  style={{ backgroundColor: '#dc3545', border: '2px solid white', color: 'white' }}>
+                view Bookings
+              </NavDropdown.Item>
             </NavDropdown>
               <Nav.Link href="/About" >
                 About Us
@@ -70,7 +70,7 @@ export default function Navbars() {
                       data-bs-toggle="dropdown"
                       stlye={{color:"#eee"}}
                     >
-                      {localStorage.getItem("username").toUpperCase()}
+                      {localStorage.getItem("username")}
                     </Link>
                     <ul className="dropdown-menu">
                       <li>

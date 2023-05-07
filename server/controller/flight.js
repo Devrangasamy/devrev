@@ -27,3 +27,11 @@ export const registerflight = async (req, res, next) => {
       next(err);
     }
   };
+  export const deleteflight = async (req, res, next) => {
+    try {
+      const book = await Flight.findByIdAndDelete(req.params.id);
+      res.status(200).json(book);
+    } catch (err) {
+      next(err);
+    }
+  };

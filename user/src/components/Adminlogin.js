@@ -3,7 +3,7 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 import Navbars from './Navbar';
 // import { useAuth } from './Authentication';
 import { useLocation, useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import {Link} from "react-router-dom"; 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,18 +29,19 @@ export default function Login() {
       }),
     });
     const json = await response.json();
-    console.log(json);
-    if (json.status=== "Success") {
+    if (json.status === "Success"&&json.data[0].isAdmin===true) {
+      navigate("/admin");
       localStorage.setItem("admin", json.data[0].isAdmin);
       localStorage.setItem("username", json.data[0].username);
       localStorage.setItem("id", json.data[0]._id);
-      navigate(location.state ? location.state.path : "/", { replace: true });
-      navigate("/");
+      navigate(location.state ? location.state.path : "/admin", { replace: true });
       setPassword("");
       setEmail("");
     } else {
-      navigate("/login");
+      alert("enter correct admin details");
+      navigate("/adminlogin");
     }
+
   };
 
   return (
@@ -48,7 +49,7 @@ export default function Login() {
       <Navbars />
       <Row className="justify-content-center ">
         <Col md={3}>
-          <h2 className="mb-6">User Login</h2>
+          <h2 className="mb-6">Admin Login</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -75,9 +76,9 @@ export default function Login() {
             <Button variant="outline-danger" type="submit">
               Login
             </Button>
-            <Link to="/adminlogin">
-              <Button variant="outline-danger" type="submit">
-                Admin login
+            <Link to="/login">
+              <Button variant="outline-danger" >
+                User login
               </Button>
             </Link>
           </div>
@@ -86,4 +87,4 @@ export default function Login() {
       </Row>
     </div>
   );
-}
+  }

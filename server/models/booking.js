@@ -1,19 +1,29 @@
 import mongoose from "mongoose";
+import user from "./user.js";
+import flight from "./flight.js";
+
 const { Schema } = mongoose;
 const BookingSchema = new Schema(
   {
-    booking_id:{
-      type: String,
+    user:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref:user,
+      required: true,
+    },
+    flight:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:flight,
       required: true,
     },
     flightid:{
-        type: String,
-      required: true,
-    },
+      type: String,
+    required: true,
+  },
     customer_name:{
       type: String,
       required: true,
     },
+
     booking_details:[{
           name: {
             type: String,
@@ -28,10 +38,6 @@ const BookingSchema = new Schema(
             type:Number,
           }
         }],
-    customer_number: {
-      type: Number,
-      required: true,
-    },
   },
   { timestamps: true }
 );
