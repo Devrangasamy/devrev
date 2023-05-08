@@ -12,11 +12,10 @@ export const registerflight = async (req, res, next) => {
   };
   export const getflights = async (req, res, next) => {
     try {
-      console.log(req.query.depature)
-      console.log(req.query.arrival)
-const filter = { flightname: {"$regex":req.query.flightname} ,from: {"$regex":req.query.from},to: {"$regex":req.query.to},flighttime: {"$lte":req.query.duration},take_off: {"$gte":req.query.depature},take_off: {"$lte":req.query.arrival}};
+const filter = { flightname: {"$regex":req.query.flightname} ,from: {"$regex":req.query.from},
+to: {"$regex":req.query.to},flighttime: {"$lte":req.query.duration},
+take_off: {"$gte":req.query.depature},land_off: {"$lte":req.query.arrival}};
       const flights = await Flight.find(filter);
-  
       console.log(flights);
       res.status(200).json(flights);
     } catch (err) {

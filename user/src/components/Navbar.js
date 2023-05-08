@@ -31,7 +31,6 @@ export default function Navbars() {
               navbarScroll
             >
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="#action2">Contact Us</Nav.Link>
               <NavDropdown title="Services" id="navbarScrollingDropdown" >
               <NavDropdown.Item href="/flightdetails"  style={{ backgroundColor: '#dc3545', border: '2px solid white', color: 'white' }}>
                 Flight booking
@@ -42,7 +41,7 @@ export default function Navbars() {
 
             </NavDropdown>
               <Nav.Link href="/About" >
-                About Us
+                Contact Us
               </Nav.Link>
             </Nav>
             <Form className="d-flex" style={{ gap: "13px" }}>

@@ -23,7 +23,17 @@ export const registerbooking=async(req,res,next)=>{
 }
   export const getbooking = async (req, res, next) => {
     try {
-      const book = await Booking.find().populate("user flight");
+      console.log(req.query.customername);
+      
+      const filter={customer_name  : {"$regex" : req.query.customername}}
+    
+      const book = await Booking.find(filter)
+      .populate({path:'flight',match:{ flightname  : {"$regex" : req.query.flightname},
+      from: {"$regex":req.query.from},
+      to: {"$regex":req.query.to},
+      take_off: {"$gte":req.query.depature},
+      land_off: {"$lte":req.query.arrival}
+    }}).exec();
       res.status(200).json(book);
     } catch (err) {
       next(err);

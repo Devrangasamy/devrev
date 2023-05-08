@@ -3,7 +3,6 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import Adminnavbar from './Adminnavbar';
 import { useNavigate } from 'react-router-dom';
 const Addflights = () => {
-  const [customerName, setCustomerName] = useState("");
   const [flightId, setFlightId] = useState("");
   const [flightName, setFlightName] = useState("");
   const [flightTime, setFlightTime] = useState(0);
@@ -36,7 +35,7 @@ const handleSubmit = async(event) => {
 
     if (json.status === "success") {
       console.log("flight is been added");
-      Navigate("/");
+      Navigate("/viewflights");
     } else 
     {
       console.log("flight is been not added");
@@ -50,19 +49,6 @@ const handleSubmit = async(event) => {
         <Row className="justify-content-center mt-4">
       <Col md={3}>
       <Form onSubmit={handleSubmit}>
-        <Row>
-          <Col>
-            <Form.Group controlId="customerName">
-              <Form.Label>Customer Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter name"
-                value={customerName}
-                onChange={(event) => setCustomerName(event.target.value)}
-              />
-            </Form.Group>
-          </Col>
-          </Row>
           <Row>
           <Col>
             <Form.Group controlId="flightId">

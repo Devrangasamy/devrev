@@ -21,7 +21,7 @@ export default function Adminnavbar() {
       <div>
       <Navbar  className='Navbar m-3' bg="danger" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#" variant="light">Admin</Navbar.Brand>
+          <Navbar.Brand href="/admin"  variant="light">Admin</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

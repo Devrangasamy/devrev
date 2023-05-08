@@ -49,7 +49,7 @@ function BookingForm() {
       Navigate("/");
     } else 
     {
-      console.log("email already exists");
+      Navigate("/");
   }
 };
   return (

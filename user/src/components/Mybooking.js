@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbars from "./Navbar";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Card, Container, Row, Col, Button,Form, FormGroup, FormControl } from "react-bootstrap";
 
 const BookingDetails = () => {
+ 
   const [bookings, setBookings] = useState([]);
-
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/book/${localStorage.getItem("id")}`).then((response) => {
+    axios.get(`http://localhost:8000/api/book/${localStorage.getItem("id")}`)
+    .then((response) => {
       setBookings(response.data);
     });
   }, []);
-
   const handleDelete = async (bookingId) => {
     try {
       await axios.delete(`http://localhost:8000/api/book/${bookingId}`);
@@ -31,6 +31,7 @@ const BookingDetails = () => {
       <Navbars />
       <h2 className="text-center mb-4">My Bookings</h2>
       <br></br>
+      
       <Row >
         {bookings.map((booking) => (
           <Col md={4} key={booking._id}>
@@ -52,10 +53,10 @@ const BookingDetails = () => {
                   <strong>To:</strong> {booking.flight.to.toUpperCase()}
                 </Card.Text>
                 <Card.Text>
-                  <strong>Departure Date:</strong> {booking.flight.take_off}
+                  <strong>Departure Date:</strong> {booking.flight.take_off.slice(0, -8)}
                 </Card.Text>
                 <Card.Text>
-                  <strong>Arrival Date:</strong> {booking.flight.land_off}
+                  <strong>Arrival Date:</strong> {booking.flight.land_off.slice(0, -8)}
                 </Card.Text>
                 <Card.Text>
                   <strong>Passenger Details:</strong>

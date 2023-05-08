@@ -39,9 +39,10 @@ const Addflights = () => {
 
     if (json.status === "success") {
       console.log("flight is been added");
-      Navigate("/admin");
+      Navigate("/viewflights");
     } else {
       console.log("flight is been not added");
+      Navigate("/viewflights");
     }
   } 
   
