@@ -5,7 +5,7 @@
 
 <p align="center"><img src="https://images.unsplash.com/photo-1534447677768-be436bb09401" alt="project-image"></p>
 
-<p id="description">This is website which is use ful for both admin and use admin includes the add flight edit flightdelete flight there is option for the searching both in the flight for addmin and user and booking search in the admin</p>
+<p id="description">This website which is use ful for both admin and use admin includes the add flight edit flightdelete flight there is option for the searching both in the flight for addmin and user and booking search in the admin</p>
 
 <h2>🚀 Demo</h2>
 
