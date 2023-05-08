@@ -20,7 +20,7 @@ const Viewflights = () => {
   const [flights, setFlights] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/flight?flightname=${flightname}&from=${from}&to=${to}&duration=${duration}
+    axios.get(`https://fair-blue-sea-lion-kit.cyclic.app/api/flight?flightname=${flightname}&from=${from}&to=${to}&duration=${duration}
     &depature=${new Date(depature).toISOString()}&arrival=${new Date(arrival).toISOString()}`)
       .then(res => {
         setFlights(res.data);
@@ -30,8 +30,8 @@ const Viewflights = () => {
 
   const handleDelete = async (bookingId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/flight/${bookingId}`);
-      const response = await axios.get(`http://localhost:8000/api/flight?flightname=${flightname}&from=${from}&to=${to}&duration=${duration}
+      await axios.delete(`https://fair-blue-sea-lion-kit.cyclic.app/api/flight/${bookingId}`);
+      const response = await axios.get(`https://fair-blue-sea-lion-kit.cyclic.app/api/flight?flightname=${flightname}&from=${from}&to=${to}&duration=${duration}
       &depature=${new Date(depature).toISOString()}&arrival=${new Date(arrival).toISOString()}`);
       setFlights(response.data);
     } catch (error) {

@@ -15,7 +15,7 @@ const Addflights = () => {
   const Navigate = useNavigate();
 const handleSubmit = async(event) => {
     event.preventDefault();
-      const response = await fetch('http://localhost:8000/api/flight/registerflight', {
+      const response = await fetch('https://fair-blue-sea-lion-kit.cyclic.app/api/flight/registerflight', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({  

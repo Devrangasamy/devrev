@@ -30,7 +30,7 @@ function BookingForm() {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-      const response = await fetch('http://localhost:8000/api/book/registerbooking', {
+      const response = await fetch('https://fair-blue-sea-lion-kit.cyclic.app/api/book/registerbooking', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({  

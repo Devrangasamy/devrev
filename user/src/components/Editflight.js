@@ -19,7 +19,7 @@ const Addflights = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(new Date(takeOff).toISOString());
-    const response = await fetch(`http://localhost:8000/api/flight/${data._id}`, {
+    const response = await fetch(`https://fair-blue-sea-lion-kit.cyclic.app/api/flight/${data._id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({  

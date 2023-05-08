@@ -47,7 +47,7 @@ export default function Signup(){
     if (newPassword !== confirmPassword) {
       alert('New password and confirm password do not match');}
     else {
-      const response = await fetch('http://localhost:8000/api/auth/register', {
+      const response = await fetch('https://fair-blue-sea-lion-kit.cyclic.app/api/auth/register', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({  

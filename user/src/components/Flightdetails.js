@@ -25,7 +25,7 @@ const FlightDetails = () => {
 
     console.log(depature);
     console.log(arrival);
-    axios.get(`http://localhost:8000/api/flight?flightname=${flightname}&from=${from}&to=${to}&duration=${duration}
+    axios.get(`https://fair-blue-sea-lion-kit.cyclic.app/api/flight?flightname=${flightname}&from=${from}&to=${to}&duration=${duration}
     &depature=${new Date(depature).toISOString()}&arrival=${new Date(arrival).toISOString()}`)
       .then(res => {
         setFlights(res.data);

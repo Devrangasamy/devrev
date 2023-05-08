@@ -16,7 +16,7 @@ const BookingDetails = () => {
     boxShadow: '1px 3px 7px rgba(0, 0, 0, 0.9)', // add box shadow effect
   };
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/book?customername=${customername}&flightname=${flightname}&from=${from}&to=${to}&depature=${new Date(depature).toISOString()}&arrival=${new Date(arrival).toISOString()}`)
+    axios.get(`https://fair-blue-sea-lion-kit.cyclic.app/api/book?customername=${customername}&flightname=${flightname}&from=${from}&to=${to}&depature=${new Date(depature).toISOString()}&arrival=${new Date(arrival).toISOString()}`)
     .then((response) => {
       setBookings(response.data);
     });
@@ -24,8 +24,8 @@ const BookingDetails = () => {
 
   const handleDelete = async (bookingId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/book/${bookingId}`);
-      const response = await axios.get('http://localhost:8000/api/book/');
+      await axios.delete(`https://fair-blue-sea-lion-kit.cyclic.app/api/book/${bookingId}`);
+      const response = await axios.get('https://fair-blue-sea-lion-kit.cyclic.app/api/book?customername=${customername}&flightname=${flightname}&from=${from}&to=${to}&depature=${new Date(depature).toISOString()}&arrival=${new Date(arrival).toISOString()}');
       setBookings(response.data);
     } catch (error) {
       console.log(error);

@@ -7,15 +7,15 @@ const BookingDetails = () => {
  
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/book/${localStorage.getItem("id")}`)
+    axios.get(`https://fair-blue-sea-lion-kit.cyclic.app/api/book/${localStorage.getItem("id")}`)
     .then((response) => {
       setBookings(response.data);
     });
   }, []);
   const handleDelete = async (bookingId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/book/${bookingId}`);
-      const response = await axios.get(`http://localhost:8000/api/book/${localStorage.getItem("id")}`);
+      await axios.delete(`https://fair-blue-sea-lion-kit.cyclic.app/api/book/${bookingId}`);
+      const response = await axios.get(`https://fair-blue-sea-lion-kit.cyclic.app/api/book/${localStorage.getItem("id")}`);
       setBookings(response.data);
     } catch (error) {
       console.log(error);
