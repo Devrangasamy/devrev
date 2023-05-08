@@ -12,8 +12,8 @@ export const registerflight = async (req, res, next) => {
   };
   export const getflights = async (req, res, next) => {
     try {
-const filter = { flightname: {"$regex":req.query.flightname} ,from: {"$regex":req.query.from},
-to: {"$regex":req.query.to},flighttime: {"$lte":req.query.duration},
+const filter = { flightname: { "$regex": new RegExp(req.query.flightname, "i") } ,from: {"$regex":new RegExp(req.query.from, "i")},
+to: {"$regex":new RegExp(req.query.to, "i")},flighttime: {"$lte":req.query.duration},
 take_off: {"$gte":req.query.depature},land_off: {"$lte":req.query.arrival}};
       const flights = await Flight.find(filter);
       console.log(flights);
