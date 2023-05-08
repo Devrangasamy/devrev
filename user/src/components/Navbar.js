@@ -22,7 +22,7 @@ export default function Navbars() {
       <div>
       <Navbar  className='Navbar m-3' bg="danger" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#" variant="light">Flight Booking</Navbar.Brand>
+          <Navbar.Brand href="#" variant="light">FLIGHT BOOKING</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
